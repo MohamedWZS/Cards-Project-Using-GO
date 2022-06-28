@@ -6,7 +6,22 @@ import "fmt"
 // which is a slice of strings
 type deck []string
 
-// creating a receiver
+func new_deck() deck {
+	myNewDeck := deck{}
+
+	cardSuits := []string{"Hearts", "Spades", "Clubs", "Diamonds"}
+	cardValues := []string{"Ace", "One", "Two", "Three"}
+
+	for _, value := range cardValues {
+		for _, suit := range cardSuits {
+			myNewDeck = append(myNewDeck, value+" of "+suit)
+		}
+	}
+
+	return myNewDeck
+}
+
+// print receiver func
 func (d deck) print() {
 	for i, cards := range d {
 		fmt.Println(i, cards)
