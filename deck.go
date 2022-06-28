@@ -6,6 +6,7 @@ import "fmt"
 // which is a slice of strings
 type deck []string
 
+// create a new deck
 func new_deck() deck {
 	myNewDeck := deck{}
 
@@ -26,4 +27,9 @@ func (d deck) print() {
 	for i, cards := range d {
 		fmt.Println(i, cards)
 	}
+}
+
+// deal func
+func deal(d deck, size int) (deck, deck) {
+	return d[:size], d[size:]
 }
