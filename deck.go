@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -37,4 +38,8 @@ func deal(d deck, size int) (deck, deck) {
 func (d deck) toString() string {
 	fmt.Println("converting a deck to a unified string")
 	return strings.Join([]string(d), ", ")
+}
+
+func (d deck) saveToFile(fileName string) error {
+	return ioutil.WriteFile(fileName, []byte(d.toString()), 0666)
 }
