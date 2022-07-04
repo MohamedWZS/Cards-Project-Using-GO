@@ -1,12 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // create a new type 'deck'
 // which is a slice of strings
 type deck []string
 
-// create a new deck
 func new_deck() deck {
 	myNewDeck := deck{}
 
@@ -22,14 +24,17 @@ func new_deck() deck {
 	return myNewDeck
 }
 
-// print receiver func
 func (d deck) print() {
 	for i, cards := range d {
 		fmt.Println(i, cards)
 	}
 }
 
-// deal func
 func deal(d deck, size int) (deck, deck) {
 	return d[:size], d[size:]
+}
+
+func (d deck) toString() string {
+	fmt.Println("converting a deck to a unified string")
+	return strings.Join([]string(d), ", ")
 }
